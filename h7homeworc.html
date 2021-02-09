@@ -95,72 +95,119 @@
       Write a function for changing the destination of every link to https://www.google.com
       */
 
-      function changeUrls() {
-
+      function changeUrls(){
+        let newHref = document.querySelector('a')
+        newHref.removeAttribute("href")
+        newHref.setAttribute('href',"https://www.google.com")
+        
       }
+      changeUrls()
 
        /* EXERCISE 5
        Write a function for adding a new item in the second list.
        */
 
       function addToTheSecond(content){
+          let newElement = document.getElementById("secondList")
+          let li = document.createElement('li')
+          li.innerText = content
+          newElement.insertAdjacentElement('beforeend', li)
 
       }
+      addToTheSecond("4tr")
 
       /* EXERCISE 6
       Write a function for adding a second paragraph to the div.
       */
 
-      function addParagraph(content){
+      //function addParagraph(content){
+      //
+      //}
 
-      }
+      function addParagraph(content){
+            let divParent = document.getElementsByTagName('div')[0]
+            let newP = document.createElement("p")
+            newP.innerText = content
+            divParent.appendChild(newP)
+        }
+        addParagraph("added another paragraph......")
 
       /* EXERCISE 7
       Write a function for making the first UL disappear.
       */
 
       function firstUlDisappear() {
+          let firstUl = document.getElementsByTagName('ul')[0]
+          firstUl.children[0].style.display = "none"
 
       }
+      firstUlDisappear()
+
 
       /* EXERCISE 8
       Write a function for making the background of every UL green.
       */
 
       function paintItGreen(){
+          let allUl = document.querySelectorAll('ul')
+          allUl.forEach(allUl => allUl.style.backgroundColor = "green")
         
-
       }
-      
+      paintItGreen()
 
       /* EXERCISE 9
       Make the heading of the page change color every time the user clicks on it.
       */
 
-      function makeItClickable(){
+     // let myHeader = document.getElementsByClassName('myHeading')
+     // function makeItClickable(){
+     //   let randomColor = () => {
+     //       let randomColor = Math.floor(Math.random() * 16777215).toString(16)
+     //       return "#" + randomColor
+     //   }
+     //   myHeader.style.color = randomColor
+     //   myHeader.onmouseover = makeItClickable()
 
-      }
+
+        const randomColor = () => {
+            let randomColor = Math.floor(Math.random() * 16777215).toString(16)
+            return "#" + randomColor
+        }
+        let myHeader = document.getElementsByTagName("header")
+        myHeader[0].onclick = (event) => event.target.style.color = randomColor()
 
       /* EXERCISE 10
       Change the footer text with something else when the user clicks on it.
       */
+        let myFooter = document.querySelector('footer p')
+        myFooter.onclick = function(event){
+            myFooter.innerText = ("...some text here...")
+        }
+        
 
-      function changeFooterText(){
-
-      }
-
+      
+      
       /* EXERCISE 11
       Attach an event listener to the input field in the page for console logging its value just after any keystroke.
       */
 
       const inputField = document.getElementById('input-field')
       
+      const fct = function(){
+          console.log(inputField.value)
+      }
+      inputField.onkeyup = fct
+
+      //inputField.onkeypress = function(event) {
+      //      console.log(event.target.value)
+      //  }
 
       /* EXERCISE 12
       Create a new welcome alert message when the page successfully loads.
       */
 
       window.onload = function(){
+          alert("welcome there")
 
       }
 
